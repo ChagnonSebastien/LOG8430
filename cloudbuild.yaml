@@ -6,8 +6,9 @@ steps:
   id: Helm
   args:
   - 'template'
-  - '-f'
-  - 'values.yaml'
+  - '.'
+  - '>'
+  - 'kubernetes.yaml'
 - name: 'gcr.io/cloud-builders/kubectl'
   id: Deploy
   args:

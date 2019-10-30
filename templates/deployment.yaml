@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: ycsb
-        image: {{ .Values.image.repository }}/{{ .Values.image.name }}:{{ .Values.image.tag }}
+        image: {{ include "image" . }}
         ports:
         - containerPort: 80
 --
