@@ -9,14 +9,10 @@ steps:
   - '.'
   - '>'
   - 'kubernetes.yaml'
-- name: 'gcr.io/cloud-builders/kubectl'
-  id: Deploy
-  args:
-  - 'apply'
-  - '-f'
-  - 'kubernetes.yaml'
   env:
-  - 'CLOUDSDK_COMPUTE_ZONE=us-central1-b'
-  - 'CLOUDSDK_CONTAINER_CLUSTER=hello-cloudbuild'
+  - 'CLOUDSDK_COMPUTE_REGION=northamerica-northeast1'
+  - 'CLOUDSDK_COMPUTE_ZONE=northamerica-northeast1-b'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=your-first-cluster-1'
+  - 'TILLERLESS=true'
 images:
 - 'gcr.io/$PROJECT_ID/ycsb-image'
