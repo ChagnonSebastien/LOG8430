@@ -17,6 +17,7 @@ spec:
       containers:
       - name: ycsb
         image: {{ include "image" . }}
+        imagePullPolicy: Always
         ports:
         - containerPort: 80
 ---
