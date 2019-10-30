@@ -1,0 +1,4 @@
+image:
+  repository: gcr.io/log8430-257421
+  name: ycsb-image
+  tag: latest

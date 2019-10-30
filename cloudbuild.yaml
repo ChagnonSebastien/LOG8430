@@ -1,5 +1,21 @@
 steps:
 - name: 'gcr.io/cloud-builders/docker'
+  id: Build
   args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/ycsb-image', '.' ]
+- name: 'gcr.io/$PROJECT_ID/helm'
+  id: Helm
+  args:
+  - 'template'
+  - '-f'
+  - 'values.yaml'
+- name: 'gcr.io/cloud-builders/kubectl'
+  id: Deploy
+  args:
+  - 'apply'
+  - '-f'
+  - 'kubernetes.yaml'
+  env:
+  - 'CLOUDSDK_COMPUTE_ZONE=us-central1-b'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=hello-cloudbuild'
 images:
 - 'gcr.io/$PROJECT_ID/ycsb-image'

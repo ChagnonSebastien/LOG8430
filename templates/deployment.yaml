@@ -1,0 +1,23 @@
+--
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ycsb-deployment
+  labels:
+    app: ycsb
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: ycsb
+  template:
+    metadata:
+      labels:
+        app: ycsb
+    spec:
+      containers:
+      - name: ycsb
+        image: {{ .Values.image.repository }}/{{ .Values.image.name }}:{{ .Values.image.tag }}
+        ports:
+        - containerPort: 80
+--
