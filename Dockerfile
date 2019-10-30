@@ -1,8 +1,5 @@
-FROM openjdk:14-alpine
+FROM alpine:latest
 
-RUN apk add git maven
-
-RUN git clone https://github.com/brianfrankcooper/YCSB.git /opt/YCSB
-WORKDIR /opt/YCSB
+RUN apk add git openjdk8-jre maven
 
 CMD tail -f /dev/null
