@@ -5,22 +5,20 @@ steps:
 - name: 'gcr.io/$PROJECT_ID/helm'
   id: Helm
   args:
-  - 'template'
+  - 'install'
   - '.'
-  - '>'
-  - 'kubernetes.yaml'
   env:
   - 'CLOUDSDK_COMPUTE_ZONE=northamerica-northeast1-b'
   - 'CLOUDSDK_CONTAINER_CLUSTER=your-first-cluster-1'
   - 'TILLERLESS=true'
-- name: 'gcr.io/cloud-builders/kubectl'
-  id: Deploy
-  args:
-  - 'apply'
-  - '-f'
-  - 'kubernetes.yaml'
-  env:
-  - 'CLOUDSDK_COMPUTE_ZONE=northamerica-northeast1-b'
-  - 'CLOUDSDK_CONTAINER_CLUSTER=your-first-cluster-1'
+#- name: 'gcr.io/cloud-builders/kubectl'
+#  id: Deploy
+#  args:
+#  - 'apply'
+#  - '-f'
+#  - 'kubernetes.yaml'
+#  env:
+#  - 'CLOUDSDK_COMPUTE_ZONE=northamerica-northeast1-b'
+#  - 'CLOUDSDK_CONTAINER_CLUSTER=your-first-cluster-1'
 images:
 - 'gcr.io/$PROJECT_ID/ycsb-image'
