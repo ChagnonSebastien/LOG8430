@@ -1,0 +1,25 @@
+---
+# Source: mychart/templates/deployment.yaml
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ycsb-deployment
+  labels:
+    app: ycsb
+spec:
+  selector:
+    matchLabels:
+      app: ycsb
+  template:
+    metadata:
+      labels:
+        app: ycsb
+    spec:
+      containers:
+      - name: ycsb
+        image: gcr.io/log8430-257421/ycsb-image:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+---
